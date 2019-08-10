@@ -13,7 +13,6 @@ public class AppPanel extends JPanel {
 	private int y;
 	private int breite;
 	private int hoehe;
-	private final int borderSize = 4;
 	
 	public AppPanel(int xCoord, int yCoord, int b, int h, Color c) {
 		this.x = xCoord;
@@ -22,7 +21,6 @@ public class AppPanel extends JPanel {
 		this.hoehe = h;
 		
 		this.setBounds(x, y, breite, hoehe);
-	    this.setBorder(createLineBorder(new Color(100, 100, 100), borderSize));
 	    this.setBackground(c);        
 	    this.setLayout(null);
 	}
