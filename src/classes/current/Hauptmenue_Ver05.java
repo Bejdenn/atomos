@@ -28,22 +28,27 @@ import javax.swing.SwingConstants;
 import static javax.swing.SwingConstants.*;
 
 @SuppressWarnings("serial")
-public class Hauptmenue_Ver05
+public class Hauptmenue_Ver05 extends AppFrame
 {
     static int lid = 1;
     public static int i;
     public int ClassSize;
     public static ArrayList<String> KursID;
+    public AppFrame frame;
+    
+    public Hauptmenue_Ver05() {
+    	super();
+    }
 
     public static void main(String[] args) throws Exception 
     {
 //        int panelsize = b/8;
 //        int fontsize = b/50;
 
-        AppFrame frame = new AppFrame();
+    	Hauptmenue_Ver05 frame = new Hauptmenue_Ver05();
      
         List <AppSeparator> BaseSeparatorList = new ArrayList<AppSeparator>();
-        BaseSeparatorList.add(new AppSeparator(0, 30, frame.getWidth(), frame.getHeight()));
+//       BaseSeparatorList.add(new AppSeparator(0, 30, frame.getWidth(), frame.getHeight()));
 //        BaseSeparatorList.add(new AppSeparator(mainPanel.borderSize, (int) round(h*0.1), b-2*rand, 400)));
 //        MainSeperator[0]);
         frame.addComponentList(BaseSeparatorList);

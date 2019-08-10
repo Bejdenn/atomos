@@ -1,7 +1,5 @@
 package main;
 
-import static javax.swing.BorderFactory.createLineBorder;
-
 import java.awt.Color;
 
 import javax.swing.JPanel;
@@ -14,7 +12,7 @@ public class AppPanel extends JPanel {
 	private int breite;
 	private int hoehe;
 	
-	public AppPanel(int xCoord, int yCoord, int b, int h, Color c) {
+	public AppPanel (int xCoord, int yCoord, int b, int h, Color c) {
 		this.x = xCoord;
 		this.y = yCoord;
 		this.breite = b;
