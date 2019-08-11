@@ -1,6 +1,8 @@
 package main;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -21,5 +23,23 @@ public class AppPanel extends JPanel {
 		this.setBounds(x, y, breite, hoehe);
 	    this.setBackground(c);        
 	    this.setLayout(null);
+	}
+	
+	public void addFunction(String func) {
+		switch(func) {
+			case "Terminate":
+				this.addMouseListener(new MouseAdapter() 
+				{
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						try {
+							System.exit(0);
+						} catch (Exception ex) {
+							
+						}
+					}
+				});
+			break;
+		}
 	}
 }

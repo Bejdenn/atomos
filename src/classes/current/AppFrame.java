@@ -26,6 +26,10 @@ public class AppFrame extends JFrame {
 		this.getContentPane().setBackground(AppColor.DUNKELBLAU);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(null);
+		AppPanel closePanel = new AppPanel(this.getBreite() - 30, 0, 30, 30, AppColor.ROSA);
+		closePanel.add(new AppLabel("X", 0, 0, 35, 35, AppColor.GRAU));
+		closePanel.addFunction("Terminate");
+		this.add(closePanel);
 	}
 	
 	@SuppressWarnings("unchecked")
