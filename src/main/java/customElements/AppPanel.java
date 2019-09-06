@@ -1,4 +1,4 @@
-package main;
+package customElements;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;

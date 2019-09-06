@@ -1,4 +1,4 @@
-package main;
+package projectTeacher;
 
 import Fragenkatalog.Fragenkatalog;
 import Klassenliste.Klassenselecter;
@@ -8,6 +8,9 @@ import Notenliste.NotenVerwalter;
 import Notenliste.NotenlisteJFrame;
 import Sitzplan.NewClass;
 import Stundenplan.Stundenplan;
+import customElements.AppFrame;
+import customElements.AppSeparator;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;

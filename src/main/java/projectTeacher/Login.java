@@ -1,30 +1,26 @@
-package LoginBildschirm;
+package projectTeacher;
 
-import java.awt.event.WindowEvent;
-import SQLite.*;
-import main.AppColor;
-import main.AppFont;
-import main.AppFrame;
-import main.AppLabel;
-import main.AppPanel;
-import main.AppSystemButtons;
+import com.guigarage.flatterfx.skin.FlatterTextFieldSkin;
 
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
-public class Login extends AppFrame {
+public class Login extends VBox {
+
+	TextField usernameInputField = new TextField();
+	FlatterTextFieldSkin skin = new FlatterTextFieldSkin(usernameInputField);
+	PasswordField passwordInputField = new PasswordField();
+	Button loginButton = new Button();
+	Button registerButton = new Button();
 
 	public Login() {
-		super();
-		AppPanel loginPanel = new AppPanel(super.getBreite() / 2, 0, super.getBreite() / 2, super.getHeight(),
-				AppColor.ROSA);
-		super.add(loginPanel);
-		AppLabel label = new AppLabel("Welcome to <br/> TeacherApp <br/>  by bejdenn!", 50, super.getHeight() / 6, 500,
-				500);
-		super.add(label);
-		super.add(new AppSystemButtons("Terminate", super.getBreite()-30, 0));
+		this.setPadding(new Insets(25, 25, 25, 25));
+		this.setSpacing(25);
+
+		this.getChildren().addAll(usernameInputField, passwordInputField, loginButton, registerButton);
 	}
 
 	private void initComponents() {
@@ -380,9 +376,6 @@ public class Login extends AppFrame {
 //        jPassword.setText("");
 //    }//GEN-LAST:event_jPasswordMouseClicked
 // 
-	public static void main(String args[]) {
-		new Login().setVisible(true);
-	}
 
 	private javax.swing.JButton jButton1;
 	private javax.swing.JPasswordField jPassword;

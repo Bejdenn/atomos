@@ -1,11 +1,13 @@
-package classes;
+package projectTeacher;
+
+
+import static javax.swing.BorderFactory.createLineBorder;
+import static javax.swing.SwingConstants.CENTER;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import javax.swing.JFrame;
-import javax.swing.JList;
 import java.awt.TextField;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
@@ -20,13 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javax.swing.BorderFactory.createLineBorder;
+
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import static javax.swing.SwingConstants.CENTER;
 
 public class Lehrerdaten {
 
@@ -36,7 +39,8 @@ public class Lehrerdaten {
 	public static TextField TextField;
 	static int reader0 = 0, reader1 = 0, reader2 = 0;
 	static String[] KlassenLokal = new String[64];
-	static int index0 = 0, int index1 = 0;
+	static int index0 = 0;
+	int index1 = 0;
 
 	static int AusgewaehlteListe;
 	static int lehrerID = 1; // LehrerID
@@ -131,7 +135,6 @@ public class Lehrerdaten {
 		String[] DataEmpty = {};
 		String[] TeachEmpty = {};
 
-		DefaultModel<E> = new DefaultListModel<E>();
 		DataModel1 = new DefaultListModel();
 		DataModel2 = new DefaultListModel();
 		DataModel3 = new DefaultListModel();

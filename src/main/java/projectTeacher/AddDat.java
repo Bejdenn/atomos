@@ -1,5 +1,6 @@
+package projectTeacher;
 //Immer noch Komplikationen mit Dateipfade; konnte nicht behoben werden
-package classes;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;

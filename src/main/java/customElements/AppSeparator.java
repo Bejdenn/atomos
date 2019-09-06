@@ -1,4 +1,4 @@
-package main;
+package customElements;
 
 import javax.swing.JSeparator;
 

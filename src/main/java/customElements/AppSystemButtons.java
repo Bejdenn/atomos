@@ -1,6 +1,4 @@
-package main;
-
-import main.AppPanel;
+package customElements;
 
 public class AppSystemButtons extends AppPanel {
 
