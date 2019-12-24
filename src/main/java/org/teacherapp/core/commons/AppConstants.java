@@ -8,11 +8,6 @@ package org.teacherapp.core.commons;
  */
 public class AppConstants {
 
-    private AppConstants() {
-
-    }
-
     public static final String PROPERTY_FILE = "config.properties";
-    public static final String TITLE = "title"; 
-    
+    public static final String TITLE = "title";
 }

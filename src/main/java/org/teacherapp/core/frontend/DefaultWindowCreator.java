@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class DefaultWindowCreator {
 
     private DefaultWindowCreator() {
-        //private one to hide the public constructor
+        // private one to hide the public constructor
     }
 
     public static Stage create() {
