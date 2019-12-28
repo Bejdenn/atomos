@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.commons.lang3.exception.ContextedRuntimeException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.teacherapp.client.Client;
@@ -11,8 +12,9 @@ import org.teacherapp.client.Client;
 public class PropertiesConfiguration {
     public static final Logger LOGGER = LogManager.getLogger(PropertiesConfiguration.class);
     private Properties property;
+    private static PropertiesConfiguration INSTANCE;
 
-    public PropertiesConfiguration() {
+    private PropertiesConfiguration() {
 
     }
 
@@ -27,11 +29,19 @@ public class PropertiesConfiguration {
             LOGGER.info("Resources file was successfully loaded.");
             return property;
         } catch (NullPointerException | IOException e) {
-            throw new ClientExecutionException(PropertiesConfiguration.class.getName(), e);
+            throw new ContextedRuntimeException("Error configuring application properties", e).addContextValue("Cause",
+                    e.getMessage());
         }
     }
 
     public String getProperty(String key) {
         return property.getProperty(key);
+    }
+
+    public static PropertiesConfiguration getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new PropertiesConfiguration();
+        }
+        return INSTANCE;
     }
 }

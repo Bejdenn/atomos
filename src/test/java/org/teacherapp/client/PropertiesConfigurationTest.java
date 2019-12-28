@@ -2,12 +2,12 @@ package org.teacherapp.client;
 
 import static org.junit.Assert.assertEquals;
 
+import org.apache.commons.lang3.exception.ContextedRuntimeException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.teacherapp.core.commons.AppConstants;
-import org.teacherapp.core.commons.ClientExecutionException;
 import org.teacherapp.core.commons.PropertiesConfiguration;
 
 public class PropertiesConfigurationTest {
@@ -22,15 +22,15 @@ public class PropertiesConfigurationTest {
 
     @Test
     public void getResourcesIsSuccessfulTest() {
-        config.load(AppConstants.PROPERTY_FILE);
+        config.load(AppConstants.PROPERTY_FILENAME);
     }
 
-    @Test(expected = ClientExecutionException.class)
+    @Test(expected = ContextedRuntimeException.class)
     public void getResourcesMissingFileTest() {
         config.load("testfile.properties");
     }
 
-    @Test(expected = ClientExecutionException.class)
+    @Test(expected = ContextedRuntimeException.class)
     public void getResourcesNullTest() {
         config.load(null);
     }
@@ -38,6 +38,6 @@ public class PropertiesConfigurationTest {
     @Test
     public void getPropertyTest() {
         this.getResourcesIsSuccessfulTest();
-        assertEquals(config.getProperty(AppConstants.TITLE), "Atomos");
+        assertEquals(config.getProperty(AppConstants.PROPERTY_ID_TITLE), "Atomos");
     }
 }

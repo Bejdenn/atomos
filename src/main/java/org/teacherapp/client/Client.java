@@ -2,6 +2,8 @@ package org.teacherapp.client;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.teacherapp.core.commons.AppConstants;
+import org.teacherapp.core.commons.PropertiesConfiguration;
 import org.teacherapp.core.frontend.DefaultWindowCreator;
 
 import javafx.application.Application;
@@ -25,8 +27,14 @@ public class Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ClientConfiguration clientConfig = new ClientConfiguration();
+        createConfiguration();
         DefaultWindowCreator.create().show();
         LOGGER.info("LoginView is started.");
+    }
+
+    private void createConfiguration() {
+        PropertiesConfiguration config = PropertiesConfiguration.getInstance();
+        config.load(AppConstants.PROPERTY_FILENAME);
+        LOGGER.info("ClientConfiguration was created and loaded successfully.");
     }
 }
