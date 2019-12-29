@@ -11,7 +11,7 @@ import org.teacherapp.client.Client;
 
 public class PropertiesConfiguration {
     public static final Logger LOGGER = LogManager.getLogger(PropertiesConfiguration.class);
-    private Properties property;
+    private static Properties property;
     private static PropertiesConfiguration INSTANCE;
 
     private PropertiesConfiguration() {
@@ -34,7 +34,7 @@ public class PropertiesConfiguration {
         }
     }
 
-    public String getProperty(String key) {
+    public static String getProperty(String key) {
         return property.getProperty(key);
     }
 

@@ -27,7 +27,7 @@ public class Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        createConfiguration();
+        this.createConfiguration();
         DefaultWindowCreator.create().show();
         LOGGER.info("LoginView is started.");
     }

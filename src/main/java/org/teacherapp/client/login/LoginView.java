@@ -36,14 +36,14 @@ public class LoginView extends ViewBase<LoginViewModel> {
     @Override
     protected void initializeGUI() {
         super.initializeGUI();
-        VBox centerContainer = new VBox();
-        centerContainer.setPadding(new Insets(25, 25, 25, 25));
-        centerContainer.setSpacing(25);
+        VBox container = new VBox();
+        container.setPadding(new Insets(25, 25, 25, 25));
+        container.setSpacing(25);
 
         viewModel.usernameInputProperty().bindBidirectional(usernameInputField.textProperty());
         viewModel.passwordInputProperty().bindBidirectional(passwordInputField.textProperty());
 
-        centerContainer.getChildren().addAll(usernameInputField, passwordInputField, loginButton, registerButton);
-        this.setCenter(centerContainer);
+        container.getChildren().addAll(usernameInputField, passwordInputField, loginButton, registerButton);
+        this.setCenter(container);
     }
 }
