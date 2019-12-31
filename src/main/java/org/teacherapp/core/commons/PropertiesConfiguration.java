@@ -9,22 +9,37 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.teacherapp.client.Client;
 
+/**
+ * Class that configures properties object based on configuration file in project hierarchy.
+ * 
+ * @author dennisbejze
+ *
+ */
 public class PropertiesConfiguration {
     public static final Logger LOGGER = LogManager.getLogger(PropertiesConfiguration.class);
-    private static Properties property;
+    private Properties property;
     private static PropertiesConfiguration INSTANCE;
 
     private PropertiesConfiguration() {
-
+        // hide public constructor
     }
 
-    public void load(String propFile) {
-        property = new Properties();
-        property = this.getResources(propFile);
+    /**
+     * Loads properties from file at given relative or absolute path. Method overwrites property when it is called more
+     * than one time.
+     * 
+     * @param propertiesFile
+     *            Relative or absolute path of configuration file
+     */
+    public void load(String propertiesFile) {
+        if (property == null) {
+            property = new Properties();
+        }
+        property = this.getResources(propertiesFile);
     }
 
-    private Properties getResources(String propFile) {
-        try (InputStream input = Client.class.getClassLoader().getResourceAsStream(propFile)) {
+    private Properties getResources(String propertiesFile) {
+        try (InputStream input = Client.class.getClassLoader().getResourceAsStream(propertiesFile)) {
             property.load(input);
             LOGGER.info("Resources file was successfully loaded.");
             return property;
@@ -34,7 +49,13 @@ public class PropertiesConfiguration {
         }
     }
 
-    public static String getProperty(String key) {
+    /**
+     * Returns value of key from properties file.
+     * 
+     * @param key
+     * @return
+     */
+    public String getProperty(String key) {
         return property.getProperty(key);
     }
 
@@ -44,4 +65,5 @@ public class PropertiesConfiguration {
         }
         return INSTANCE;
     }
+
 }

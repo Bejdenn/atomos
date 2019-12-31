@@ -27,14 +27,18 @@ public class Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.createConfiguration();
+        this.loadConfiguration();
         DefaultWindowCreator.create().show();
         LOGGER.info("LoginView is started.");
     }
 
-    private void createConfiguration() {
+    /**
+     * Loads configuration for client from properties file.
+     */
+    private void loadConfiguration() {
         PropertiesConfiguration config = PropertiesConfiguration.getInstance();
         config.load(AppConstants.PROPERTY_FILENAME);
         LOGGER.info("ClientConfiguration was created and loaded successfully.");
     }
+
 }

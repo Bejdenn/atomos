@@ -2,8 +2,10 @@ package org.teacherapp.core.frontend;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.teacherapp.client.login.LoginView;
+import org.teacherapp.client.classes.ClassesView;
+import org.teacherapp.client.events.EventsView;
 import org.teacherapp.client.mainmenu.MainMenuView;
+import org.teacherapp.client.questioncatalog.QuestionsCatalogView;
 import org.teacherapp.core.commons.AppConstants;
 import org.teacherapp.core.commons.PropertiesConfiguration;
 
@@ -24,32 +26,8 @@ public class DefaultWindowCreator {
     }
 
     public static Stage create() {
-        Stage stage = DefaultWindowCreator.initStage();
-
-        TabPane tabs = new TabPane();
-        Scene scene = new Scene(tabs);
-
-        TabFactory tabFactory = TabFactory.createFactory();
-        MainMenuView mainMenuViewInstance = new MainMenuView();
-        Tab mainMenuTab = tabFactory.setTabProperties(AppConstants.MAIN_MENU, false).assignView(mainMenuViewInstance)
-                .getTab();
-
-        TabFactory tabFactory2 = TabFactory.createFactory();
-        LoginView loginViewInstance = new LoginView();
-        Tab classesTab = tabFactory2.setTabProperties(AppConstants.CLASSES, true).assignView(loginViewInstance)
-                .getTab();
-
-        tabs.getTabs().addAll(mainMenuTab, classesTab);
-        stage.setScene(scene);
-
-        LOGGER.info("Components for default window were created.");
-
-        return stage;
-    }
-
-    private static Stage initStage() {
         Stage stage = new Stage();
-        stage.setTitle(PropertiesConfiguration.getProperty(AppConstants.PROPERTY_ID_TITLE));
+        stage.setTitle(PropertiesConfiguration.getInstance().getProperty(AppConstants.PROPERTY_ID_TITLE));
         stage.setResizable(true);
 
         Screen screen = Screen.getPrimary();
@@ -62,11 +40,31 @@ public class DefaultWindowCreator {
 
         LOGGER.info("Properties of window were set up.");
 
-        return stage;
-    }
+        TabPane tabs = new TabPane();
+        Scene scene = new Scene(tabs);
 
-    public static TabPane getTabs() {
-        return tabs;
+        MainMenuView mainMenuViewInstance = new MainMenuView();
+        Tab mainMenuTab = TabFactory.newFactory().setText(AppConstants.MAIN_MENU).setClosable(false).setDisable(false)
+                .assignViewInstance(mainMenuViewInstance).createTab();
+
+        ClassesView classesViewInstance = new ClassesView();
+        Tab classesTab = TabFactory.newFactory().setText(AppConstants.CLASSES).setClosable(false).setDisable(false)
+                .assignViewInstance(classesViewInstance).createTab();
+
+        EventsView eventsViewInstance = new EventsView();
+        Tab eventsTab = TabFactory.newFactory().setText(AppConstants.EVENTS).setClosable(false).setDisable(false)
+                .assignViewInstance(eventsViewInstance).createTab();
+
+        QuestionsCatalogView questionsCatalogViewInstance = new QuestionsCatalogView();
+        Tab questionsCatalogTab = TabFactory.newFactory().setText(AppConstants.QUESTIONS_CATALOG).setClosable(false)
+                .setDisable(false).assignViewInstance(questionsCatalogViewInstance).createTab();
+
+        tabs.getTabs().addAll(mainMenuTab, classesTab, eventsTab, questionsCatalogTab);
+        stage.setScene(scene);
+
+        LOGGER.info("Components for default window were created.");
+
+        return stage;
     }
 
 }
