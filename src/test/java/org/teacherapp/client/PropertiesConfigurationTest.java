@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.teacherapp.core.commons.AppConstants;
-import org.teacherapp.core.commons.PropertiesConfiguration;
+import org.teacherapp.core.commons.configuration.PropertiesConfiguration;
 
 public class PropertiesConfigurationTest {
 

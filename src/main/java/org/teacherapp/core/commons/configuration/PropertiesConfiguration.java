@@ -1,4 +1,4 @@
-package org.teacherapp.core.commons;
+package org.teacherapp.core.commons.configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,10 +15,10 @@ import org.teacherapp.client.Client;
  * @author dennisbejze
  *
  */
-public class PropertiesConfiguration {
+public class PropertiesConfiguration implements Configuration {
     public static final Logger LOGGER = LogManager.getLogger(PropertiesConfiguration.class);
     private Properties property;
-    private static PropertiesConfiguration INSTANCE;
+    private static Configuration INSTANCE;
 
     private PropertiesConfiguration() {
         // hide public constructor
@@ -59,7 +59,7 @@ public class PropertiesConfiguration {
         return property.getProperty(key);
     }
 
-    public static PropertiesConfiguration getInstance() {
+    public static Configuration getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new PropertiesConfiguration();
         }

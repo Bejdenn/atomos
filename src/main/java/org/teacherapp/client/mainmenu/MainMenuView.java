@@ -1,6 +1,5 @@
 package org.teacherapp.client.mainmenu;
 
-import org.teacherapp.core.commons.AppConstants;
 import org.teacherapp.core.frontend.ViewBase;
 
 import javafx.scene.control.Button;
@@ -16,12 +15,9 @@ public class MainMenuView extends ViewBase<MainMenuViewModel> {
     protected void initializeGUI() {
         TilePane container = new TilePane();
 
-        Button classesBtn = new Button(AppConstants.CLASSES);
-        Button eventsBtn = new Button(AppConstants.EVENTS);
-        Button timeTableBtn = new Button(AppConstants.TIMETABLE);
-        Button questionsCatalogBtn = new Button(AppConstants.QUESTIONS_CATALOG);
+        Button classesBtn = new Button();
 
-        container.getChildren().addAll(classesBtn, eventsBtn, timeTableBtn, questionsCatalogBtn);
+        container.getChildren().addAll(classesBtn);
 
         this.setCenter(container);
     }

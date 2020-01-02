@@ -3,11 +3,15 @@ package org.teacherapp.core.frontend;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.teacherapp.client.classes.ClassesView;
+import org.teacherapp.client.classes.ClassesViewModel;
 import org.teacherapp.client.events.EventsView;
+import org.teacherapp.client.events.EventsViewModel;
 import org.teacherapp.client.mainmenu.MainMenuView;
+import org.teacherapp.client.mainmenu.MainMenuViewModel;
 import org.teacherapp.client.questioncatalog.QuestionsCatalogView;
+import org.teacherapp.client.questioncatalog.QuestionsCatalogViewModel;
 import org.teacherapp.core.commons.AppConstants;
-import org.teacherapp.core.commons.PropertiesConfiguration;
+import org.teacherapp.core.commons.configuration.PropertiesConfiguration;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -43,21 +47,17 @@ public class DefaultWindowCreator {
         TabPane tabs = new TabPane();
         Scene scene = new Scene(tabs);
 
-        MainMenuView mainMenuViewInstance = new MainMenuView();
-        Tab mainMenuTab = TabFactory.newFactory().setText(AppConstants.MAIN_MENU).setClosable(false).setDisable(false)
-                .assignViewInstance(mainMenuViewInstance).createTab();
+        ViewBase<MainMenuViewModel> mainMenuViewInstance = new MainMenuView();
+        Tab mainMenuTab = ViewFactory.createView(ViewEnum.MAIN_MENU, mainMenuViewInstance);
 
-        ClassesView classesViewInstance = new ClassesView();
-        Tab classesTab = TabFactory.newFactory().setText(AppConstants.CLASSES).setClosable(false).setDisable(false)
-                .assignViewInstance(classesViewInstance).createTab();
+        ViewBase<ClassesViewModel> classesViewInstance = new ClassesView();
+        Tab classesTab = ViewFactory.createView(ViewEnum.CLASSES, classesViewInstance);
 
-        EventsView eventsViewInstance = new EventsView();
-        Tab eventsTab = TabFactory.newFactory().setText(AppConstants.EVENTS).setClosable(false).setDisable(false)
-                .assignViewInstance(eventsViewInstance).createTab();
+        ViewBase<EventsViewModel> eventsViewInstance = new EventsView();
+        Tab eventsTab = ViewFactory.createView(ViewEnum.EVENTS, eventsViewInstance);
 
-        QuestionsCatalogView questionsCatalogViewInstance = new QuestionsCatalogView();
-        Tab questionsCatalogTab = TabFactory.newFactory().setText(AppConstants.QUESTIONS_CATALOG).setClosable(false)
-                .setDisable(false).assignViewInstance(questionsCatalogViewInstance).createTab();
+        ViewBase<QuestionsCatalogViewModel> questionsCatalogViewInstance = new QuestionsCatalogView();
+        Tab questionsCatalogTab = ViewFactory.createView(ViewEnum.QUESTIONS_CATALOG, questionsCatalogViewInstance);
 
         tabs.getTabs().addAll(mainMenuTab, classesTab, eventsTab, questionsCatalogTab);
         stage.setScene(scene);

@@ -3,7 +3,8 @@ package org.teacherapp.client;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.teacherapp.core.commons.AppConstants;
-import org.teacherapp.core.commons.PropertiesConfiguration;
+import org.teacherapp.core.commons.configuration.Configuration;
+import org.teacherapp.core.commons.configuration.PropertiesConfiguration;
 import org.teacherapp.core.frontend.DefaultWindowCreator;
 
 import javafx.application.Application;
@@ -36,7 +37,7 @@ public class Client extends Application {
      * Loads configuration for client from properties file.
      */
     private void loadConfiguration() {
-        PropertiesConfiguration config = PropertiesConfiguration.getInstance();
+        Configuration config = PropertiesConfiguration.getInstance();
         config.load(AppConstants.PROPERTY_FILENAME);
         LOGGER.info("ClientConfiguration was created and loaded successfully.");
     }
