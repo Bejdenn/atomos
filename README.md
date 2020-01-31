@@ -8,7 +8,7 @@ At the moment there is no way to build the application or create an executable j
 
 ## Goals
 - [ ] Write unit tests for code
-- [ ] Use MVVM pattern
+- [ ] Use MVVM pattern
 - [ ] Analyse for clean code (enable sonarqube scanning for project)
 - [ ] Build executable application
 - [ ] Try CI-build (with Jenkins)
