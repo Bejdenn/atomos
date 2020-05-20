@@ -1,0 +1,15 @@
+dependencies {
+	implementation "com.elinis:core-commons:${coreVersion}"
+	implementation "com.elinis:core-backend:${coreVersion}"
+
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+	
+	runtimeOnly "mysql:mysql-connector-java"
+	
+	testImplementation "org.mockito:mockito-core"
+    testImplementation "junit:junit:${junitVersion}"
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -1,0 +1,32 @@
+plugins {
+    id "maven-publish"
+}
+
+task sourceJar(type: Jar) {
+	classifier = "sources"
+	from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier = 'javadoc'
+	from javadoc.destinationDir
+}
+
+publishing {
+	publications {
+        mavenJava(MavenPublication) {
+            artifact (project.tasks.jar){
+                artifactId "${project.name}"
+                extension 'jar'
+            }
+
+     		artifact sourceJar
+    		artifact javadocJar
+  		}
+	}
+}
+
+dependencies {
+	implementation ("com.elinis:core-commons:${coreVersion}")
+	testImplementation ("junit:junit:${junitVersion}")
+}

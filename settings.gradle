@@ -1,1 +1,5 @@
-rootProject.name = 'TeachersApp'
+include ':project-teacher-client'
+include ':project-teacher-commons'
+include ':project-teacher-server'
+
+rootProject.name = 'project-teacher'
